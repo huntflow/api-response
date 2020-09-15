@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ static_url('main.css') }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Присоединяйтесь к команде — {{ vacancy_name }}</title>
+  <meta name="description" content="Прямо сейчас мы делаем большой шаг вперед в новые сегменты и на новые рынки" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:title" content="Присоединяйтесь к команде — {{ vacancy_name }}">
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="Прямо сейчас мы делаем большой шаг вперед в новые сегменты и на новые рынки">
+  <meta property="og:image" content="{{ static_url('og/' + vacancy_og) }}">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <h1>
+        Присоединяйтесь <br /> к&nbsp;команде!
+        <strong>
+          Отклик: <a href="{{ vacancy_url }}" target="_blank">{{ vacancy_name }}</a>
+        </strong>
+      </h1>
+
+      <form action="" method="post" novalidate enctype="multipart/form-data">
+        {% module xsrf_form_html() %}
+        <label for="first_name" class="visually-hidden">Имя</label>
+        <input type="text" name="first_name" id="first_name" class="input" placeholder="Имя" required />
+        <label for="last_name" class="visually-hidden">Фамилия</label>
+        <input type="text" name="last_name" id="last_name" class="input" placeholder="Фамилия" required />
+        <label for="phone" class="visually-hidden">Телефон</label>
+        <input type="tel" name="phone" id="phone" class="input" placeholder="Телефон" required />
+        <label for="email" class="visually-hidden">Адрес эл. почты</label>
+        <input type="email" name="email" id="email" class="input" placeholder="Адрес эл. почты" required />
+        <label for="comment" class="visually-hidden">Сопроводительное письмо</label>
+        <textarea name="comment" id="comment" class="input" rows="3" placeholder="Сопроводительное письмо"></textarea>
+        <label for="cv" class="visually-hidden">Ссылка на резюме (если есть)</label>
+        <input type="text" name="cv" id="cv" class="input" placeholder="Ссылка на резюме (если есть)" />
+        <div class="input-file-wrapper">
+          <input type="file" id="cv_file" name="cv_file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf,application/pdf" />
+          <label class="input input-file" for="cv_file">
+            <svg width="27" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M1.757 23.998C.623 22.79 0 21.182 0 19.472s.623-3.317 1.757-4.526L13.303 2.503c3.129-3.337 8.219-3.338 11.348 0C26.166 4.121 27 6.27 27 8.557c0 2.287-.834 4.437-2.35 6.053L14.022 26l-1.33-1.42L23.32 13.19c2.394-2.555 2.394-6.711 0-9.267-2.393-2.554-6.291-2.555-8.686 0L3.088 16.365a4.516 4.516 0 00-1.206 3.108 4.52 4.52 0 001.206 3.106c1.606 1.714 4.218 1.712 5.823 0l9.502-10.214c.817-.871.817-2.289 0-3.161a2.006 2.006 0 00-2.962 0l-8.584 9.162-1.332-1.421 8.586-9.16c1.55-1.655 4.073-1.656 5.624 0 1.551 1.654 1.55 4.346 0 6l-9.503 10.213c-1.135 1.21-2.64 1.876-4.243 1.876-1.603 0-3.11-.666-4.242-1.876z" fill="currentColor"/>
+            </svg>
+
+            <span>Прикрепление резюме</span>
+          </label>
+        </div>
+        <div class="consent">
+          Отправляя форму, я даю согласие на обработку перс. данных и принимаю <br /> <a href="{{ privacy_url }}" target="_blank">Политику конфиденциальности</a>
+        </div>
+        <button class="button">Откликнуться</button>
+        <p class="error"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="{{ static_url('main.js') }}" async></script>
+</body>
+</html>
